@@ -1,0 +1,128 @@
+<div class="container pt-5 pb-5" *ngIf="user_info.id=='2'">
+    <!-- <form #myform="ngForm" (ngSubmit)="onUpdate(formObj)" novalidate> -->
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Image</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Grade</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Total Marks</th>
+                <th scope="col">Created By</th>
+                <th scope="col">Created At</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let one_item of countries; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>
+                    <img src="https://teamsqa4000.educore.guru/uploads/exammaker/qb/file_1650525835706.png" class="me-2"
+                        style="width: 20px">
+                    {{ one_item.name }}
+                </td>
+                <td>
+                    <div *ngIf="!one_item.is_edit_mode">
+                        {{ one_item.title }}
+                    </div>
+                    <div class="md-form" *ngIf="one_item.is_edit_mode">
+                        <input mdbInput type="text" name="title"
+                         [(ngModel)]="one_item.title"
+                         id="form1" class="form-control">
+                    </div>
+
+                </td>
+                <td>
+                    <div *ngIf="!one_item.is_edit_mode">
+                        {{ one_item.description}}
+                    </div>
+                    <div class="md-form" *ngIf="one_item.is_edit_mode">
+                        <input mdbInput type="text" name="description"
+                         [(ngModel)]="one_item.description"
+                         id="form1" class="form-control">
+                    </div>
+                    
+                </td>
+                <td>
+                    <div *ngIf="!one_item.is_edit_mode">
+                        {{ one_item.grade}}
+                    </div>
+                    <div class="md-form" *ngIf="one_item.is_edit_mode">
+                        <input mdbInput type="text" name="grade"
+                         [(ngModel)]="one_item.grade"
+                         id="form1" class="form-control">
+                    </div>
+                    
+                </td>
+                <td>
+                    <div *ngIf="!one_item.is_edit_mode">
+                        {{ one_item.subject}}
+                    </div>
+                    <div class="md-form" *ngIf="one_item.is_edit_mode">
+                        <input mdbInput type="text" name="subject"
+                         [(ngModel)]="one_item.subject"
+                         id="form1" class="form-control">
+                    </div>
+                    
+                </td>
+                <td>
+                    <div *ngIf="!one_item.is_edit_mode">
+                        {{ one_item.total_marks}}
+                    </div>
+                    <div class="md-form" *ngIf="one_item.is_edit_mode">
+                        <input mdbInput type="text" name="total_marks"
+                         [(ngModel)]="one_item.total_marks"
+                         id="form1" class="form-control">
+                    </div>
+                    
+                </td>
+                
+                <td>
+                    <div *ngIf="!one_item.is_edit_mode">
+                        {{ one_item.created_by}}
+                    </div>
+                    <div class="md-form" *ngIf="one_item.is_edit_mode">
+                        <input mdbInput type="text" name="created_by"
+                         [(ngModel)]="one_item.created_by"
+                         id="form1" class="form-control">
+                    </div>
+                    
+                </td>
+                <td>
+                    <div *ngIf="!one_item.is_edit_mode">
+                        {{ one_item.created_at}}
+                    </div>
+                    <div class="md-form" *ngIf="one_item.is_edit_mode">
+                        <input mdbInput type="text" name="created_at"
+                         [(ngModel)]="one_item.created_at"
+                         id="form1" class="form-control">
+                    </div>
+                    
+                </td>
+                <td><button type="button" class="btn btn-success" (click)="one_item.is_edit_mode = !one_item.is_edit_mode;
+                    editModeUpdate(one_item)">
+                        {{ one_item.is_edit_mode ? "Cancel" : "Edit"}}
+                    </button></td>
+                
+                <!-- <td><button type="button" class="btn btn-danger" (click)="deleteRow(one_item)">Delete</button></td> -->
+                <button class="btn btn-danger" (click)="openModal(one_item,i)" style="margin-top: 12px;">Delete</button>
+                <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <!-- <button class="btn btn-lg btn-outline-primary" (click)="openModal()">Launch demo modal</button> -->
+      </div>
+    </div>
+  </div>
+            </tr>
+             
+        </tbody>
+    </table>
+<!-- </form> -->
+    <input type="submit" class="btn btn-info" value="Save" (click)="saveEntity()" style="margin-left: 45%">
+</div>
+
+
+<app-contact *ngIf="user_info.id=='1'"></app-contact>
